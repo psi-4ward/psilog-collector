@@ -1,0 +1,28 @@
+{
+  "name": "psilog-collector",
+  "version": "1.0.0",
+  "description": "Parse logs and stream it into elasticsearch",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "chalk": "^0.5.1",
+    "gaze": "^0.6.4",
+    "glob": "^4.0.5",
+    "js-yaml": "^3.2.2",
+    "lodash": "^2.4.1",
+    "moment": "^2.8.3",
+    "nomnom": "^1.8.0",
+    "split2": "^0.2.1",
+    "useragent": "^2.0.9",
+    "winston": "^0.7.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "LGPL"
+}

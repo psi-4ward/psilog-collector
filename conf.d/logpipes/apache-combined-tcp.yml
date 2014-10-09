@@ -1,0 +1,21 @@
+# A user defined name for this logpipe
+name: TCP Logpipe using ApacheCombined
+
+# Listen on TCP for log-lines
+input:
+  type: tcp
+  ip: 127.0.0.1
+  port: 7701
+
+## Use the apache-combined preset
+preset: apache-combined
+
+# add some more transformers
+transformers:
+  - anonymizeIp
+
+
+# put everything to elasticsearch
+output:
+  type: elasticsearch
+  port: 9200
