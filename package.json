@@ -15,6 +15,7 @@
     "lodash": "^2.4.1",
     "moment": "^2.8.3",
     "nomnom": "^1.8.0",
+    "sane": "^0.8.0",
     "split2": "^0.2.1",
     "useragent": "^2.0.9",
     "winston": "^0.7.3"
