@@ -1,0 +1,20 @@
+### Preset for linux auth.log
+
+# Split the logstream by line
+splitter: line
+
+# Convert the logline to JSON
+parser:
+  type: regex
+  regex: '/^(\w+ \d+ [0-9:]+) ([^ ]+) (.+)\[.+\]: (.*)$/'
+  fields: ['@timestamp', 'host', 'proc', 'message']
+
+transformers:
+    # Convert the Date-String into a unix timestamp
+  - type: parseDate
+    format: 'MMM DD HH:mm:ss'
+
+    # Add _type field, used for elasticsearch mapping
+  - type: addFields
+    fields:
+      _type: authlog

@@ -1,0 +1,20 @@
+### Preset to handle the apache combined log format
+
+# Split the logstream by line
+splitter: line
+
+# Convert the logline to JSON
+parser:
+  type: regex
+  regex: '/^\[([^\]]+)\] \[(.+)\] \[[^ ]+ ([^\]]+)\] (.+)$/'
+  fields: ['@timestamp', 'severity', 'ip', 'message']
+
+transformers:
+    # Convert the Date-String into a unix timestamp
+  - type: parseDate
+    format: 'ddd MMM DD HH:mm:ss YYYY'
+
+    # Add _type field, used for elasticsearch mapping
+  - type: addFields
+    fields:
+      _type: webserver-error

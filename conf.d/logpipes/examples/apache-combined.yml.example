@@ -1,0 +1,20 @@
+# A user defined name for this logpipe
+name: Logpipe for Apache 2.2 combined logs
+
+# Tail all .access.log files
+input:
+  type: files
+  dir: /var/log/apache2
+  glob: "*.access.log"
+
+## Use the apache-combined preset
+preset: apache-combined
+
+# add some more transformers
+transformers:
+  - anonymizeIp
+
+# put everything to elasticsearch
+output:
+  type: elasticsearch
+  port: 9200
