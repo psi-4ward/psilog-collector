@@ -6,14 +6,15 @@ splitter: line
 # Convert the logline to JSON
 parser:
   type: regex
+  nowarn: true # suppress warnings for non matching rgxp
   regex:
     - '/^(\w+ \d+ [0-9:]+) ([^ ]+) (.+)\[.+\]: ([A-Z0-9]+): to=<(.*)>, relay=([^\[]+)\[(.+)\]:(\d+), delay=([\d\.]+), delays=([^,]+), dsn=([\d\.]+), status=(\w+) (.*)$/'
     - '/^(\w+ \d+ [0-9:]+) ([^ ]+) (.+)\[.+\]: ([A-Z0-9]+): (.*)$/'
-    - '/^(\w+ \d+ [0-9:]+) ([^ ]+) (.+)\[.+\]: (.*)$/'
+#    - '/^(\w+ \d+ [0-9:]+) ([^ ]+) (.+)\[.+\]: (.*)$/'
   fields:
     - ['@timestamp', 'host', 'proc', 'jobid', 'to', 'relay_host', 'relay_ip', 'relay_port', 'delay', 'delays', 'dsn', 'status', 'message']
     - ['@timestamp', 'host', 'proc', 'jobid', 'message']
-    - ['@timestamp', 'host', 'proc', 'message']
+#    - ['@timestamp', 'host', 'proc', 'message']
 
 transformers:
     # Convert the Date-String into a unix timestamp
