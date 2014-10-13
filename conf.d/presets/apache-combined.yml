@@ -20,4 +20,4 @@ transformers:
     # Add _type field, used for elasticsearch mapping
   - type: addFields
     fields:
-      _type: webserver
+      _type: webserver-access
