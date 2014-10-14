@@ -1,0 +1,32 @@
+postfix:
+  properties:
+        proc:
+          type: string
+          index: not_analyzed
+        jobid:
+          type: string
+          index: not_analyzed
+        to:
+          type: string
+          index: not_analyzed
+        relay_host:
+          type: string
+          index: not_analyzed
+        relay_ip:
+          type: ip
+          index: not_analyzed
+        relay_port:
+          type: integer
+          index: not_analyzed
+        delay:
+          type: integer
+          index: not_analyzed
+        delays:
+          type: string
+          index: not_analyzed
+        status:
+          type: string
+          index: not_analyzed
+        message:
+          type: string
+          index: analyzed
