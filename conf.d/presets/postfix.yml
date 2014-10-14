@@ -12,9 +12,9 @@ parser:
     - '/^(\w+ \d+ [0-9:]+) ([^ ]+) (.+)\[.+\]: ([A-Z0-9]+): (.*)$/'
 #    - '/^(\w+ \d+ [0-9:]+) ([^ ]+) (.+)\[.+\]: (.*)$/'
   fields:
-    - ['@timestamp', 'host', 'proc', 'jobid', 'to', 'relay_host', 'relay_ip', 'relay_port', 'delay', 'delays', 'dsn', 'status', 'message']
-    - ['@timestamp', 'host', 'proc', 'jobid', 'message']
-#    - ['@timestamp', 'host', 'proc', 'message']
+    - ['@timestamp', 'host', 'process', 'jobid', 'to', 'relay_host', 'relay_ip', 'relay_port', 'delay', 'delays', 'dsn', 'status', 'message']
+    - ['@timestamp', 'host', 'process', 'jobid', 'message']
+#    - ['@timestamp', 'host', 'process', 'message']
 
 transformers:
     # Convert the Date-String into a unix timestamp
@@ -24,4 +24,4 @@ transformers:
     # Add _type field, used for elasticsearch mapping
   - type: addFields
     fields:
-      _type: maillog
+ess      _type: maillog

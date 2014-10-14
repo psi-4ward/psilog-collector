@@ -7,7 +7,7 @@ splitter: line
 parser:
   type: regex
   regex: '/^(\w+ \d+ [0-9:]+) ([^ ]+) (.+)\[.+\]: (.*)$/'
-  fields: ['@timestamp', 'host', 'proc', 'message']
+  fields: ['@timestamp', 'host', 'process', 'message']
 
 transformers:
     # Convert the Date-String into a unix timestamp
