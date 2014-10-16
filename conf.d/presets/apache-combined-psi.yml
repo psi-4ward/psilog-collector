@@ -16,7 +16,7 @@ parser:
 transformers:
     # Convert the Date-String into a unix timestamp
   - type: parseDate
-    format: 'DD/MMM/YYY:HH:mm:ss ZZ'
+    format: 'DD/MMM/YYYY:HH:mm:ss ZZ'
 
     # Parse the useragent string and transform it into a an object
   - useragentDetector
