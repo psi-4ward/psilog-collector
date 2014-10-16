@@ -8,22 +8,29 @@ parser:
   type: regex
   nowarn: true # suppress warnings for non matching rgxp
   regex:
-    - '/^(\w+ \d+ [0-9:]+) ([^ ]+) (.+)\[.+\]: NOQUEUE: (.*) from=<(.*)> to=<(.*)>.*$/'
-    - '/^(\w+ \d+ [0-9:]+) ([^ ]+) (.+)\[.+\]: ([A-Z0-9]+): from=<(.*)> (.*)$/'
-    - '/^(\w+ \d+ [0-9:]+) ([^ ]+) (.+)\[.+\]: ([A-Z0-9]+): to=<(.*)>, relay=([^,]+), delay=([\d\.]+), delays=([^,]+), dsn=([\d\.]+), status=(\w+) (.*)$/'
+    - '/^(\w+ \d+ [0-9:]+) ([^ ]+) (.+)\[.+\]: NOQUEUE: ([^\:]+): (.*)$/'
     - '/^(\w+ \d+ [0-9:]+) ([^ ]+) (.+)\[.+\]: ([A-Z0-9]+): (.*)$/'
-#    - '/^(\w+ \d+ [0-9:]+) ([^ ]+) (.+)\[.+\]: (.*)$/'
   fields:
-    - ['@timestamp', 'host', 'process', 'status', 'message', 'from', 'to']
-    - ['@timestamp', 'host', 'process', 'jobid', 'from', 'message']
-    - ['@timestamp', 'host', 'process', 'jobid', 'to', 'relay', 'delay', 'delays', 'dsn', 'status', 'message']
+    - ['@timestamp', 'host', 'process', 'status', 'message']
     - ['@timestamp', 'host', 'process', 'jobid', 'message']
-#    - ['@timestamp', 'host', 'process', 'message']
 
 transformers:
     # Convert the Date-String into a unix timestamp
   - type: parseDate
     format: 'MMM DD HH:mm:ss'
+
+  - type: regex
+    srcField: message
+    regex:
+      - '/from=<([^>]+)>/'
+      - '/to=<([^>]+)>/'
+      - '/status=([^ ]+)/'
+      - '/relay=([^ ]+)/'
+    fields:
+      - ['from']
+      - ['to']
+      - ['status']
+      - ['relay']
 
     # Add _type field, used for elasticsearch mapping
   - type: addFields
