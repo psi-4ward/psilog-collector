@@ -23,6 +23,18 @@ _default:
       type: string
       index: not_analyzed
 
-    process:
+    class:
       type: string
+      index: not_analyzed
+
+    subclass:
+      type: string
+      index: not_analyzed
+
+    metric_value:
+      type: float
+      index: not_analyzed
+
+    percent:
+      type: float
       index: not_analyzed
