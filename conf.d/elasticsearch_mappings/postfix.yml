@@ -9,14 +9,8 @@ postfix:
         to:
           type: string
           index: not_analyzed
-        relay_host:
+        relay:
           type: string
-          index: not_analyzed
-        relay_ip:
-          type: ip
-          index: not_analyzed
-        relay_port:
-          type: integer
           index: not_analyzed
         delay:
           type: integer
