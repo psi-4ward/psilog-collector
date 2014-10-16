@@ -1,6 +1,6 @@
 ### Preset to handle the apache combined-psi log format
 # Adds response_time, vhost and request_host to the log
-# Apache conf:  
+# Apache conf:
 # LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %{Host}i %v" combined
 
 
@@ -11,7 +11,7 @@ splitter: line
 parser:
   type: regex
   regex: '/^([^ ]+) . (.+) \[([^\]]+)] "([^ ]+) ([^"]+) ([^ ]+)" (\d+) ([\d-]+) "([^\"]*)" "([^\"]+)" (\d+) ([^ ]+) ([^ ]+)/'
-  fields: ['ip', 'htauthUser', '@timestamp', 'method', 'path', 'protocol', 'responseCode', 'responseBytes', 'referrer', 'useragent', 'response_time', 'request_host', 'vhost']
+  fields: ['ip', 'htauthUser', '@timestamp', 'method', 'path', 'protocol', 'responseCode', 'responseBytes', 'referrer', 'useragent', 'responseTime', 'requestHost', 'vHost']
 
 transformers:
     # Convert the Date-String into a unix timestamp

@@ -18,6 +18,15 @@ webserver-access:
         responseBytes:
           type: integer
           index: not_analyzed
+        responseTime:
+          type: integer
+          index: not_analyzed
+        requestHost:
+          type: string
+          index: not_analyzed
+        vHost:
+          type: string
+          index: not_analyzed
         referrer:
           type: string
           index: not_analyzed
