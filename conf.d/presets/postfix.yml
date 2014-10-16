@@ -24,4 +24,4 @@ transformers:
     # Add _type field, used for elasticsearch mapping
   - type: addFields
     fields:
-ess      _type: maillog
+      _type: maillog
