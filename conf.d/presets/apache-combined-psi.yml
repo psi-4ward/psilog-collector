@@ -1,0 +1,27 @@
+### Preset to handle the apache combined-psi log format
+# Adds response_time, vhost and request_host to the log
+# Apache conf:  
+# LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %D %{Host}i %v" combined
+
+
+# Split the logstream by line
+splitter: line
+
+# Convert the logline to JSON
+parser:
+  type: regex
+  regex: '/^([^ ]+) . (.+) \[([^\]]+)] "([^ ]+) ([^"]+) ([^ ]+)" (\d+) ([\d-]+) "([^\"]*)" "([^\"]+)" (\d+) ([^ ]+) ([^ ]+)/'
+  fields: ['ip', 'htauthUser', '@timestamp', 'method', 'path', 'protocol', 'responseCode', 'responseBytes', 'referrer', 'useragent', 'response_time', 'request_host', 'vhost']
+
+transformers:
+    # Convert the Date-String into a unix timestamp
+  - type: parseDate
+    format: 'DD/MMM/YYY:HH:mm:ss ZZ'
+
+    # Parse the useragent string and transform it into a an object
+  - useragentDetector
+
+    # Add _type field, used for elasticsearch mapping
+  - type: addFields
+    fields:
+      _type: webserver-access
