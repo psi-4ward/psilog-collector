@@ -10,7 +10,7 @@ splitter: line
 # Convert the logline to JSON
 parser:
   type: regex
-  regex: '/^([^ ]+) . (.+) \[([^\]]+)] "([^ ]+) ([^"]+) ([^ ]+)" (\d+) ([\d-]+) "([^\"]*)" "([^\"]+)" (\d+) ([^ ]+) ([^ ]+)/'
+  regex: '/^([^ ]+) ([^ ]+) (.+) \[([^\]]+)] "([^ ]+) (([^\"]|\")*) ([^ ]+)" (\d+) ([\d-]+) "(([^\"]|\")*)" "(([^\"]|\")*)" (\d+) ([^ ]+) ([^ ]+)/'
   fields: ['ip', 'htauthUser', '@timestamp', 'method', 'path', 'protocol', 'responseCode', 'responseBytes', 'referrer', 'useragent', 'responseTime', 'requestHost', 'vHost']
 
 transformers:
