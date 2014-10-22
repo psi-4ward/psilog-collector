@@ -1,6 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
-if [ -d /usr/lib/node_modules/psilog-collector/conf.d ]
+FDIR=`readlink -f $0`;
+ROOT=`dirname $FDIR`/..
+ROOT=`realpath $ROOT`
+
+if [ -d /etc/conf.d ]
 then
-    ln -s /usr/lib/node_modules/psilog-collector/conf.d /etc/psilog-collector
+    ln -s $ROOT/conf.d /etc/psilog-collector
 fi
