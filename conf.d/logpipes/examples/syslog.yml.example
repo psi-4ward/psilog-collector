@@ -1,0 +1,15 @@
+# A user defined name for this logpipe
+name: Syslog pipe
+
+# Tail syslog file
+input:
+  type: file
+  file: /var/log/syslog
+
+# Use the syslog preset
+preset: syslog
+
+# put everything to elasticsearch
+output:
+  type: elasticsearch
+  port: 9200

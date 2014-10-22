@@ -1,0 +1,12 @@
+# A user defined name for this logpipe
+name: load
+
+# Use the load input, it outputs ready to index JSON objects
+input:
+  type: load
+  interval: 60 # interval should be 60s 300s or 900s cause we use the `load` command
+
+# put everything to elasticsearch
+output:
+  type: elasticsearch
+  port: 9200
