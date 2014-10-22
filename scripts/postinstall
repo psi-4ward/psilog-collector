@@ -1,0 +1,6 @@
+#!/bin/sh
+
+if [ -d /usr/lib/node_modules/psilog-collector/conf.d ]
+then
+    ln -s /usr/lib/node_modules/psilog-collector/conf.d /etc/psilog-collector
+fi

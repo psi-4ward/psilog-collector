@@ -9,6 +9,9 @@
     "type": "git",
     "url": "http://github.com/psi-4ward/psilog-collector.git"
   },
+  "bugs": {
+    "url": "http://github.com/psi-4ward/psilog-collector/issues"
+  },
   "keywords": [
     "logging",
     "elasticsearch",
@@ -31,7 +34,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "scripts/postinstall"
   },
   "bin": {
     "psilog-collector": "./bin/psilog-collector"
