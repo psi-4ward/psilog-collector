@@ -1,11 +1,21 @@
 {
   "name": "psilog-collector",
   "version": "1.0.0",
-  "description": "Parse logs and stream it into elasticsearch",
+  "preferGlobal": "true",
+  "description": "Parse logs and stream it anywhere e.g. elasticsearch",
   "main": "app.js",
-  "directories": {
-    "test": "test"
+  "author": "Psi <wio@psitrax.de>",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/psi-4ward/psilog-collector.git"
   },
+  "keywords": [
+    "logging",
+    "elasticsearch",
+    "monitoring",
+    "log aggregation"
+  ],
+  "directories": {},
   "dependencies": {
     "async": "^0.9.0",
     "chalk": "^0.5.1",
@@ -23,6 +33,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "bin": {
+    "psilog-collector": "./bin/psilog-collector"
+  },
+  "engines": {
+    "node": ">= 0.10.x"
+  },
   "license": "LGPL"
 }
