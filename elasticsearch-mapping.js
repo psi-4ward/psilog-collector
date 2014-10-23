@@ -8,7 +8,7 @@ var http = require('http');
 var cmdargs = require("nomnom")
   .help('POST the mapping-tempaltes to elasticsearch')
   .option('host', {
-    abbr: 'h',
+    abbr: 'a',
     default: 'localhost',
     help: 'Elasticsearch host'
   })
