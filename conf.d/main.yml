@@ -1,3 +1,13 @@
 ### PsiLog main configuration file
 
-# (nothing here yet)
+## Logging
+log:
+  level: info
+  file: "psilog-collector.log"
+
+
+## Elasticsearch output
+elasticsearch:
+  maxRequestSize: 512000  # max request size in byte
+  maxRequestsPerHost: 5   # max open connection per ES host
+  flushtime: 5            # flush the request at least every 5 seconds
