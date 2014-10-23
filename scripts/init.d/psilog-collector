@@ -15,14 +15,20 @@ PIDFILE=/var/run/psilog-collector.pid
 LOGFILE=/var/log/psilog-collector.log
 
 start() {
-  if [ -f /var/run/$PIDNAME ] && kill -0 $(cat /var/run/$PIDNAME); then
+  if [ -f $PIDFILE ] && kill -0 $(cat $PIDFILE); then
     echo 'PsiLog-Collector already running' >&2
     return 1
   fi
-  echo 'Starting PsiLog-Collector…' >&2
+  echo 'Starting PsiLog-Collector...'
   local CMD="$SCRIPT &> \"$LOGFILE\" & echo \$!"
   su -c "$CMD" $RUNAS > "$PIDFILE"
-  echo 'PsiLog-Collector started' >&2
+
+  if [ -f $PIDFILE ] && kill -0 $(cat $PIDFILE); then
+    echo 'PsiLog-Collector started'
+  else
+    echo "failed, see $LOGFILE" >&2
+    return 1
+  fi
 }
 
 stop() {
@@ -30,22 +36,17 @@ stop() {
     echo 'PsiLog-Collector not running' >&2
     return 1
   fi
-  echo 'PsiLog-Collector service…' >&2
+  echo 'Stopping PsiLog-Collector service...' >&2
   kill -15 $(cat "$PIDFILE") && rm -f "$PIDFILE"
-  echo 'PsiLog-Collector stopped' >&2
+  echo 'PsiLog-Collector stopped'
 }
 
-uninstall() {
-  echo -n "Are you really sure you want to uninstall this service? That cannot be undone. [yes|No] "
-  local SURE
-  read SURE
-  if [ "$SURE" = "yes" ]; then
-    stop
-    rm -f "$PIDFILE"
-    echo "Notice: log file was not removed: '$LOGFILE'" >&2
-    update-rc.d -f psilog-collector remove
-    rm -fv "$0"
-  fi
+status() {
+    if [ -f $PIDFILE ] && kill -0 $(cat $PIDFILE); then
+      echo 'PsiLog-Collector running'
+    else
+      echo 'PsiLog-Collector stopped'
+    fi
 }
 
 case "$1" in
@@ -55,13 +56,13 @@ case "$1" in
   stop)
     stop
     ;;
-  uninstall)
-    uninstall
-    ;;
-  retart)
+  restart)
     stop
     start
     ;;
+  status)
+    status
+    ;;
   *)
-    echo "Usage: $0 {start|stop|restart|uninstall}"
+    echo "Usage: $0 {start|stop|restart|status}"
 esac
