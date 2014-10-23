@@ -21,3 +21,8 @@ transformers:
   - type: addFields
     fields:
       _type: webserver-access
+
+  - type: replace
+    fields: responseBytes
+    search: -
+    replace: 0
