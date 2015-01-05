@@ -1,6 +1,6 @@
 {
   "name": "psilog-collector",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "preferGlobal": "true",
   "description": "Parse logs and stream it anywhere e.g. elasticsearch",
   "main": "app.js",
