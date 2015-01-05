@@ -10,6 +10,6 @@ input:
 preset: owncloud
 
 # put everything to elasticsearch
-output: stdout
-  # type: elasticsearch
-  # port: 9200
+output: 
+  type: elasticsearch
+  port: 9200
