@@ -1,0 +1,15 @@
+# A user defined name for this logpipe
+name: ownCloud pipe
+
+# Tail syslog file
+input:
+  type: file
+  file: /Users/felix/Sites/ownCloud/deployment/systems/ldap-enterprise-7.0.4/data/owncloud.log
+
+# Use the owncloud preset
+preset: owncloud
+
+# put everything to elasticsearch
+output: stdout
+  # type: elasticsearch
+  # port: 9200

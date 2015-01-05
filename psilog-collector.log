@@ -1,0 +1,6 @@
+2015-00-05 16:57:03 - error: Could not parse /Users/felix/Sites/webhippie/repos/psilog-collector/conf.d/presets/apache-combined-psi.yml: bad indentation of a sequence entry at line 31, column 13:
+        search: -
+                ^
+2015-00-05 16:58:41 - error: Could not parse /Users/felix/Sites/webhippie/repos/psilog-collector/conf.d/presets/apache-combined.yml: bad indentation of a sequence entry at line 27, column 13:
+        search: -
+                ^

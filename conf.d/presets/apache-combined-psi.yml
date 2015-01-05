@@ -28,5 +28,5 @@ transformers:
 
   - type: replace
     fields: responseBytes
-    search: -
+    search: '-'
     replace: 0
