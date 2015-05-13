@@ -16,6 +16,7 @@ api.on('ready', function() {
     process.exit(0);
   }
 
+  api.logger.debug('init logpipes');
   // create all logpipes
   logpipes.init();
 
