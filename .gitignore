@@ -3,4 +3,4 @@
 /.idea/
 /temp/
 conf.d/logpipes/test.yml
-psilog-collector.log 
+psilog-collector.log

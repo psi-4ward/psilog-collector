@@ -1,0 +1,36 @@
+splitter: line
+
+parser:
+  type: parseJson
+
+transformers:
+  - type: addFields
+    _type: journald
+  - type: renameField
+    fields:
+      - _BOOT_ID : boot_id
+      - _TRANSPORT : transport
+      - _UID : uid
+      - _GID : gid
+      - _MACHINE_ID : machine_id
+      - _HOSTNAME : hostname
+      - _PID : pid
+      - _COMM : command
+      - _EXE : executable
+      - _CMDLINE : shell
+      - _SYSTEMD_UNIT : systemd_unit
+      - SYSLOG_IDENTIFIER : syslog_ident
+      - __REALTIME_TIMESTAMP : "@timestamp"
+  - type: removeField
+    fields:
+      - _CAP_EFFECTIVE
+      - _SYSTEMD_SLICE
+      - _TRANSPORT
+      - __CURSOR
+      - __MONOTONIC_TIMESTAMP
+      - _SYSTEMD_CGROUP
+  - type: replace
+    fields: "@timestamp"
+    search: /(\d{13})(.*)/
+    replace: $1
+
