@@ -2,7 +2,7 @@
 
 ## Logging
 log:
-  level: debug
+  level: info
   file: "psilog-collector.log"
 
 
