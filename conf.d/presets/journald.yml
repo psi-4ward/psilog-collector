@@ -5,7 +5,8 @@ parser:
 
 transformers:
   - type: addFields
-    _type: journald
+    fields:
+      _type: journald
 
   - type: renameField
     fields:
