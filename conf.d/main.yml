@@ -2,8 +2,11 @@
 
 ## Logging
 log:
+  file: false
   level: info
-  file: "psilog-collector.log"
+  colorize: true
+  timestamp: true
+
 
 
 ## Elasticsearch output
